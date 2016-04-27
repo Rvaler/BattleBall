@@ -19,7 +19,8 @@ class GameScene: SKScene {
     let basePlayerTwo = SKSpriteNode(imageNamed: "blueCircle")
     let controlPlayerTwo = SKSpriteNode(imageNamed: "redCircle")
     
-    var stickActive : Bool = false
+    var stickActivePlayerOne : Bool = false
+    var stickActivePlayerTwo : Bool = false
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -53,10 +54,18 @@ class GameScene: SKScene {
         for touch in touches {
             let location = touch.locationInNode(self)
             
-            if CGRectContainsPoint(controlPlayerOne.frame, location) {
-                stickActive = true
-            }else{
-                stickActive = false
+            if location.y < 0 {
+                if CGRectContainsPoint(controlPlayerOne.frame, location) {
+                    stickActivePlayerOne = true
+                }else{
+                    stickActivePlayerOne = false
+                }
+            } else {
+                if CGRectContainsPoint(controlPlayerTwo.frame, location) {
+                    stickActivePlayerTwo = true
+                }else{
+                    stickActivePlayerTwo = false
+                }
             }
         }
     }
@@ -68,33 +77,61 @@ class GameScene: SKScene {
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
             let location = touch.locationInNode(self)
-            
-            if stickActive == true {
+           
+            if location.y < 0 && stickActivePlayerOne == true {
+                print("baixo")
                 let vector = CGVector(dx: location.x - basePlayerOne.position.x, dy: location.y - basePlayerOne.position.y)
                 let angle = atan2(vector.dy, vector.dx)
-                
+
                 let deg = angle * CGFloat(180 / M_PI)
                 //            print(deg + 180)
-                
+
                 let length:CGFloat = basePlayerOne.frame.size.height / 2
-                
+
                 let xDistance:CGFloat = sin(angle - 1.57079633) * length
                 let yDistance:CGFloat = cos(angle - 1.57079633) * length
-                
+
                 if CGRectContainsPoint(basePlayerOne.frame, location) {
                     controlPlayerOne.position = location
                 }else{
                     controlPlayerOne.position = CGPointMake(basePlayerOne.position.x - xDistance, basePlayerOne.position.y + yDistance)
+                }
+            }else if location.y > 0 && stickActivePlayerTwo == true {
+                print("cima")
+                let vector = CGVector(dx: location.x - basePlayerTwo.position.x, dy: location.y - basePlayerTwo.position.y)
+                let angle = atan2(vector.dy, vector.dx)
+
+                let deg = angle * CGFloat(180 / M_PI)
+                //            print(deg + 180)
+
+                let length:CGFloat = basePlayerTwo.frame.size.height / 2
+
+                let xDistance:CGFloat = sin(angle - 1.57079633) * length
+                let yDistance:CGFloat = cos(angle - 1.57079633) * length
+
+                if CGRectContainsPoint(basePlayerTwo.frame, location) {
+                    controlPlayerTwo.position = location
+                }else{
+                    controlPlayerTwo.position = CGPointMake(basePlayerTwo.position.x - xDistance, basePlayerTwo.position.y + yDistance)
                 }
             }
         }
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        if stickActive == true {
-            let move:SKAction = SKAction.moveTo(basePlayerOne.position, duration: 0.2)
-            move.timingMode = .EaseOut
-            controlPlayerOne.runAction(move)
+        
+        for touch in touches {
+            let location = touch.locationInNode(self)
+            
+            if location.y < 0 && stickActivePlayerOne == true {
+                let move:SKAction = SKAction.moveTo(basePlayerOne.position, duration: 0.2)
+                move.timingMode = .EaseOut
+                controlPlayerOne.runAction(move)
+            }else if location.y > 0 && stickActivePlayerTwo == true {
+                let move:SKAction = SKAction.moveTo(basePlayerTwo.position, duration: 0.2)
+                move.timingMode = .EaseOut
+                controlPlayerTwo.runAction(move)
+            }
         }
     }
 }
