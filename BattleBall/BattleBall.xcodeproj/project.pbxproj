@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54D03D471CD13ED500060956 /* FieldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D03D461CD13ED500060956 /* FieldNode.swift */; };
+		54D03D4A1CD2786100060956 /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D03D491CD2786100060956 /* PhysicsBody.swift */; };
 		54D227F31CD0161800DAE4A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D227F21CD0161800DAE4A7 /* AppDelegate.swift */; };
 		54D227F51CD0161800DAE4A7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 54D227F41CD0161800DAE4A7 /* GameScene.sks */; };
 		54D227F71CD0161800DAE4A7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D227F61CD0161800DAE4A7 /* GameScene.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		54D03D461CD13ED500060956 /* FieldNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldNode.swift; sourceTree = "<group>"; };
+		54D03D491CD2786100060956 /* PhysicsBody.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsBody.swift; sourceTree = "<group>"; };
 		54D227EF1CD0161800DAE4A7 /* BattleBall.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BattleBall.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54D227F21CD0161800DAE4A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54D227F41CD0161800DAE4A7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				54D227F81CD0161800DAE4A7 /* GameViewController.swift */,
 				54D227FA1CD0161800DAE4A7 /* Main.storyboard */,
 				54D227FD1CD0161800DAE4A7 /* Assets.xcassets */,
+				54D03D461CD13ED500060956 /* FieldNode.swift */,
+				54D03D491CD2786100060956 /* PhysicsBody.swift */,
 				54D227FF1CD0161800DAE4A7 /* LaunchScreen.storyboard */,
 				54D228021CD0161800DAE4A7 /* Info.plist */,
 			);
@@ -266,10 +272,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				54D03D471CD13ED500060956 /* FieldNode.swift in Sources */,
 				54D227F71CD0161800DAE4A7 /* GameScene.swift in Sources */,
 				54D227F91CD0161800DAE4A7 /* GameViewController.swift in Sources */,
 				54D228251CD0198500DAE4A7 /* PlayerNode.swift in Sources */,
 				54D227F31CD0161800DAE4A7 /* AppDelegate.swift in Sources */,
+				54D03D4A1CD2786100060956 /* PhysicsBody.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +425,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RafaelValer.BattleBall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -428,6 +437,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = RafaelValer.BattleBall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -498,6 +508,7 @@
 				54D2281D1CD0161800DAE4A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		54D2281E1CD0161800DAE4A7 /* Build configuration list for PBXNativeTarget "BattleBallTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +517,7 @@
 				54D228201CD0161800DAE4A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		54D228211CD0161800DAE4A7 /* Build configuration list for PBXNativeTarget "BattleBallUITests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +526,7 @@
 				54D228231CD0161800DAE4A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
