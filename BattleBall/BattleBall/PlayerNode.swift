@@ -20,7 +20,22 @@ class PlayerNode: SKSpriteNode {
         }
         
         super.init(texture: texture, color: UIColor.clearColor(), size: texture.size())
+        self.initPhysics(self)
 //        self.anchorPoint = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height / 2)
+    }
+    
+    func initPhysics(playerNode: PlayerNode){
+        playerNode.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "blueCircle"), size: CGSize(width: 52, height: 52))
+        playerNode.physicsBody?.dynamic = true
+        playerNode.physicsBody?.affectedByGravity = false
+        playerNode.physicsBody?.friction = 1
+        playerNode.physicsBody?.restitution = 1
+        playerNode.physicsBody?.linearDamping = 0
+        playerNode.physicsBody?.angularDamping = 0
+        
+        playerNode.physicsBody?.categoryBitMask = PhysicsBody.PhysicsCategory.PlayerCategoryBitMask
+        playerNode.physicsBody?.collisionBitMask = PhysicsBody.PhysicsCategory.BallCategoryBitMask | PhysicsBody.PhysicsCategory.FieldCategoryBitMask
+        playerNode.physicsBody?.contactTestBitMask = PhysicsBody.PhysicsCategory.BallCategoryBitMask | PhysicsBody.PhysicsCategory.FieldCategoryBitMask
     }
     
     required init?(coder aDecoder: NSCoder) {

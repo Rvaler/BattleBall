@@ -13,8 +13,9 @@ class PhysicsBody: NSObject {
     struct PhysicsCategory {
         static let None      : UInt32 = 0
         static let All       : UInt32 = UInt32.max
-        static let BallCategoryBitMask   : UInt32 = 0b1       // 1
+        static let BallCategoryBitMask   : UInt32 = 0b1     // 1
         static let FieldCategoryBitMask: UInt32 = 0b10      // 2
+        static let PlayerCategoryBitMask: UInt32 = 0b11     // 3
     }
     
 }
